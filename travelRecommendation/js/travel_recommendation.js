@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function displayResults(query, data) {
     const resultsContainer = document.getElementById('results');
-    resultsContainer.innerHTML = '';
+    resultsContainer.innerHTML = ''; // Clear previous results
 
     switch (query.toLowerCase()) {
         case 'countries':
