@@ -16,14 +16,9 @@ function loadNavbar() {
                 fetchSearchResults(query);
             });
 
-            // Add event listener for search input for live search
-            document.getElementById('search-input').addEventListener('input', function(event) {
-                const query = event.target.value;
-                if (query) {
-                    fetchSearchResults(query);
-                } else {
-                    clearSearchResults();
-                }
+            // Add event listener for the clear button
+            document.querySelector('.clear-button').addEventListener('click', function() {
+                clearSearch();
             });
         })
         .catch(error => console.error('Error loading navbar:', error));
@@ -79,15 +74,56 @@ function createResultCard(item) {
     img.alt = item.name;
     card.appendChild(img);
 
+    const content = document.createElement('div');
+    content.className = 'result-content';
+
     const name = document.createElement('h2');
-    name.innerText = item.name;
-    card.appendChild(name);
+    name.innerText = item.name; // Ensure the name is correctly assigned
+    content.appendChild(name);
 
     const description = document.createElement('p');
     description.innerText = item.description;
-    card.appendChild(description);
+    content.appendChild(description);
+
+    const localTime = document.createElement('p');
+    localTime.className = 'local-time';
+    localTime.innerText = 'Loading local time...';
+    content.appendChild(localTime);
+
+    // Fetch and update local time
+    fetchLocalTime(item, localTime);
+
+    card.appendChild(content);
 
     return card;
+}
+
+function fetchLocalTime(item, localTimeElement) {
+    const timezones = {
+        "Sydney, Australia": "Australia/Sydney",
+        "Melbourne, Australia": "Australia/Melbourne",
+        "Tokyo, Japan": "Asia/Tokyo",
+        "Kyoto, Japan": "Asia/Tokyo",
+        "Rio de Janeiro, Brazil": "America/Sao_Paulo",
+        "São Paulo, Brazil": "America/Sao_Paulo",
+        "Angkor Wat, Cambodia": "Asia/Phnom_Penh",
+        "Taj Mahal, India": "Asia/Kolkata",
+        "Bora Bora, French Polynesia": "Pacific/Tahiti",
+        "Copacabana Beach, Brazil": "America/Sao_Paulo"
+    };
+
+    const timezone = timezones[item.name];
+    if (timezone) {
+        const localTime = moment().tz(timezone).format('MMMM Do YYYY, h:mm:ss a');
+        localTimeElement.innerText = `Local Time: ${localTime}`;
+    } else {
+        localTimeElement.innerText = 'Local time not available';
+    }
+}
+
+function clearSearch() {
+    document.getElementById('search-input').value = '';
+    clearSearchResults();
 }
 
 function clearSearchResults() {
