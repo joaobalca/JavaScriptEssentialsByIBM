@@ -1,5 +1,5 @@
 {
-    "countries": [
+    "country": [
       {
         "id": 1,
         "name": "Australia",
@@ -28,7 +28,7 @@
           {
             "name": "Kyoto, Japan",
             "imageUrl": "img/kyoto.jpg",
-            "description": "Known for its historic temples, gardens, and traditional tea houses."
+            "description": "Known for its historic temple, gardens, and traditional tea houses."
           }
         ]
       },
@@ -39,7 +39,7 @@
           {
             "name": "Rio de Janeiro, Brazil",
             "imageUrl": "img/rio.jpg",
-            "description": "A lively city known for its stunning beaches, vibrant carnival celebrations, and iconic landmarks."
+            "description": "A lively city known for its stunning beach, vibrant carnival celebrations, and iconic landmarks."
           },
           {
             "name": "São Paulo, Brazil",
@@ -49,7 +49,7 @@
         ]
       }
     ],
-    "temples": [
+    "temple": [
       {
         "id": 1,
         "name": "Angkor Wat, Cambodia",
@@ -63,7 +63,7 @@
         "description": "An iconic symbol of love and a masterpiece of Mughal architecture."
       }
     ],
-    "beaches": [
+    "beach": [
       {
         "id": 1,
         "name": "Bora Bora, French Polynesia",

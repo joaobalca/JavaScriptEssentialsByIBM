@@ -16,20 +16,20 @@ function displayResults(query, data) {
     resultsContainer.innerHTML = ''; // Clear previous results
 
     switch (query.toLowerCase()) {
-        case 'countries':
-            data.countries.forEach(country => {
+        case 'country':
+            data.country.forEach(country => {
                 country.cities.forEach(city => {
                     resultsContainer.appendChild(createCard(city));
                 });
             });
             break;
-        case 'temples':
-            data.temples.forEach(temple => {
+        case 'temple':
+            data.temple.forEach(temple => {
                 resultsContainer.appendChild(createCard(temple));
             });
             break;
-        case 'beaches':
-            data.beaches.forEach(beach => {
+        case 'beach':
+            data.beach.forEach(beach => {
                 resultsContainer.appendChild(createCard(beach));
             });
             break;

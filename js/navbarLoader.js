@@ -39,20 +39,20 @@ function displaySearchResults(query, data) {
 
     let resultsFound = false;
 
-    if (query.toLowerCase() === 'countries') {
-        data.countries.forEach(country => {
+    if (query.toLowerCase() === 'country') {
+        data.country.forEach(country => {
             country.cities.forEach(city => {
                 resultsContainer.appendChild(createResultCard(city));
                 resultsFound = true;
             });
         });
-    } else if (query.toLowerCase() === 'temples') {
-        data.temples.forEach(temple => {
+    } else if (query.toLowerCase() === 'temple') {
+        data.temple.forEach(temple => {
             resultsContainer.appendChild(createResultCard(temple));
             resultsFound = true;
         });
-    } else if (query.toLowerCase() === 'beaches') {
-        data.beaches.forEach(beach => {
+    } else if (query.toLowerCase() === 'beach') {
+        data.beach.forEach(beach => {
             resultsContainer.appendChild(createResultCard(beach));
             resultsFound = true;
         });
